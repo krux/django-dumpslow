@@ -77,7 +77,6 @@ class LogLongRequestMiddleware(object):
 
         # If it was really slow, email admins. Disabled by default.
         email_threshold = getattr(settings, 'DUMPSLOW_EMAIL_REQUEST_TIME', -1)
-        email_threshold = 0
         if email_threshold > -1 and time_taken > email_threshold:
             subject = "SLOW PAGE: %s" % request.path
             message = "This page took %2.2f seconds to render for %s, which is over the threshold of %s.\n\n%s" % (time_taken, request.user, email_threshold, str(request)) 
