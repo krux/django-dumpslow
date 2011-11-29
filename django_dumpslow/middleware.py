@@ -82,7 +82,7 @@ class LogLongRequestMiddleware(object):
             message = "This page took %2.2f seconds to render for %s, which is over the threshold of %s.\n\n%s" % (time_taken, request.user, email_threshold, str(request)) 
             try:
                 mail_admins(subject, message)
-            except e:
+            except Exception as e:
                 # Ignore any errors sending mail in production
                 if settings.DEBUG:
                     raise e
